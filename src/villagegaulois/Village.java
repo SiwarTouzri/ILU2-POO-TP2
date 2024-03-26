@@ -148,26 +148,26 @@ public class Village {
 		}
 
 		private Etal[] trouverEtals(String produit) {
-			int nbEtal = 0;
-			for (Etal etal : etals) {
-				if (etal.isEtalOccupe() && etal.contientProduit(produit)) {
-					nbEtal++;
-				}
-			}
-			Etal[] etalsProduitsRecherche = null;
-			if (nbEtal > 0) {
-				etalsProduitsRecherche = new Etal[nbEtal];
-				int nbEtalTrouve = 0;
-				for (int i = 0; i < etals.length
-						&& nbEtalTrouve < nbEtal; i++) {
-					if (etals[i].isEtalOccupe()
-							&& etals[i].contientProduit(produit)) {
-						etalsProduitsRecherche[nbEtalTrouve] = etals[i];
-						nbEtalTrouve++;
-					}
-				}
-			}
-			return etalsProduitsRecherche;
+		    int nbEtal = 0;
+		    if (etals != null) {
+		        for (Etal etal : etals) {
+		            if (etal != null && etal.isEtalOccupe() && etal.contientProduit(produit)) {
+		                nbEtal++;
+		            }
+		        }
+		    }
+		    Etal[] etalsProduitsRecherche = null;
+		    if (nbEtal > 0) {
+		        etalsProduitsRecherche = new Etal[nbEtal];
+		        int nbEtalTrouve = 0;
+		        for (int i = 0; etals != null && i < etals.length && nbEtalTrouve < nbEtal; i++) {
+		            if (etals[i] != null && etals[i].isEtalOccupe() && etals[i].contientProduit(produit)) {
+		                etalsProduitsRecherche[nbEtalTrouve] = etals[i];
+		                nbEtalTrouve++;
+		            }
+		        }
+		    }
+		    return etalsProduitsRecherche;
 		}
 
 		private Etal trouverVendeur(Gaulois gaulois) {

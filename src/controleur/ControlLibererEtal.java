@@ -26,14 +26,13 @@ public class ControlLibererEtal {
 	 * 		[4] : quantité de produit vendu
 	 */
 	public String[] libererEtal(String nomVendeur) {
-		
-		String[] donneesEtal = null;
-		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
-		if (isVendeur(nomVendeur)) {
-			donneesEtal = etal.etatEtal();
-		}
-		etal.libererEtal();
-		return donneesEtal;
-	}
-
+        Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
+        if (etal != null) {
+            String[] donneesEtal = etal.etatEtal();
+            etal.libererEtal();
+            return donneesEtal;
+        } else {
+            return new String[]{"Étal non trouvé"};
+        }
+    }
 }
